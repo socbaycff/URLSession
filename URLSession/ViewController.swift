@@ -19,15 +19,18 @@ class ViewController: UIViewController {
     
     let request: URLRequest = {
         let url = URL(string: "https://numbersapi.p.rapidapi.com/random/trivia?max=\(APIConstant.max)&fragment=true&min=\(APIConstant.min)&json=true")!
-        var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy,timeoutInterval: 10.0)
-        
+        var request = URLRequest(url: url)
         request.httpMethod = "GET" // chon phuong thuc get
         request.allHTTPHeaderFields = APIConstant.headers // set header cho request
         return request
     }()
     
     
+ 
+    
+    
     @IBAction func getFactFromAPI(_ sender: Any) {
+        
         let dataTask = session.dataTask(with: request , completionHandler: { (data, response, error) -> Void in
             if (error != nil) {
                 print(error.debugDescription)
@@ -37,10 +40,10 @@ class ViewController: UIViewController {
                     let fact = try JSONDecoder().decode(Fact.self, from: data!) // chuyen data tra ve thanh obj
                     print(fact)
                     
-//                    //  chuyen ve luong main
-//                    DispatchQueue.main.async {
-//                        self.label.text = fact.description
-//                    }
+                    //  chuyen ve luong main
+                    DispatchQueue.main.async {
+                        self.label.text = fact.description
+                    }
                 } catch  {
                     print("error")
                 }
@@ -53,5 +56,25 @@ class ViewController: UIViewController {
     }
     
     
+    @IBAction func lookup(_ sender: Any) {
+        let headers = [
+             "x-rapidapi-host": "mashape-community-urban-dictionary.p.rapidapi.com",
+             "x-rapidapi-key": "2d2d7cfabcmsh91fde64cfd21fd6p1884f2jsnb74327d61fa6"
+         ]
+        
+        let word = "watssup"
+        let url = URL(string: "https://mashape-community-urban-dictionary.p.rapidapi.com/define?term=\(word)")!
+        var request = URLRequest(url: url,timeoutInterval: 10)
+        request.httpMethod = "GET" // get
+        request.allHTTPHeaderFields = headers // header set
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            let obj = try! JSONDecoder().decode(SearchResult.self, from: data!)
+            print(obj.list[0].definition)
+            //  chuyen ve luong main
+            DispatchQueue.main.async {
+                self.label.text = obj.list[0].definition
+            }
+        }.resume()
+    }
     
 }

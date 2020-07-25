@@ -17,8 +17,8 @@ class Fact: Codable, CustomStringConvertible {
     }
     
    // var found: Bool?
-    var number: Int?
-    var text: String?
-    var type: String?
+    var number: Int
+    var text: String
+    var type: String
 
 }

@@ -23,11 +23,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUu-pn-ihQ">
-                                <rect key="frame" x="140" y="561" width="46" height="30"/>
+                                <rect key="frame" x="106" y="561" width="115" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="get NUmber fact"/>
                                 <connections>
                                     <action selector="getFactFromAPI:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Y5l-Zb-25L"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkj-bC-zT3">
+                                <rect key="frame" x="215" y="517" width="65" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="urban dic"/>
+                                <connections>
+                                    <action selector="lookup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Aqz-sx-3Qi"/>
                                 </connections>
                             </button>
                         </subviews>
