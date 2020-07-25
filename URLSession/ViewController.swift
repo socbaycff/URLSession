@@ -4,6 +4,7 @@ import UIKit
 struct APIConstant {
     static let max = 20
     static let min = 5
+    // header api number : id user, host rapid api
     static let headers = [
         "x-rapidapi-host": "numbersapi.p.rapidapi.com",
         "x-rapidapi-key": "2d2d7cfabcmsh91fde64cfd21fd6p1884f2jsnb74327d61fa6"
@@ -57,11 +58,12 @@ class ViewController: UIViewController {
     
     
     @IBAction func lookup(_ sender: Any) {
+        // header voi id user su dung rapid api, host name
         let headers = [
              "x-rapidapi-host": "mashape-community-urban-dictionary.p.rapidapi.com",
              "x-rapidapi-key": "2d2d7cfabcmsh91fde64cfd21fd6p1884f2jsnb74327d61fa6"
          ]
-        
+        // su dung api
         let word = "watssup"
         let url = URL(string: "https://mashape-community-urban-dictionary.p.rapidapi.com/define?term=\(word)")!
         var request = URLRequest(url: url,timeoutInterval: 10)
